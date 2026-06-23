@@ -1,0 +1,19 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "Prisma.prisma",
+    "ms-azuretools.vscode-docker",
+    "eamodio.gitlens",
+    "usernamehw.errorlens",
+    "streetsidesoftware.code-spell-checker",
+    "PKief.material-icon-theme",
+    "nrwl.angular-console",
+    "ms-vscode.vscode-typescript-next",
+    "formulahendry.auto-rename-tag",
+    "christian-kohler.path-intellisense",
+    "mikestead.dotenv",
+    "humao.rest-client"
+  ]
+}

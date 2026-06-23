@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"c:/Users/Aadi Tendulkar/Desktop/CreditMap/.vscode\")"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\Aadi Tendulkar\\Desktop\\CreditMap"
+    ]
+  }
+}
