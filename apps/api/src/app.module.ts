@@ -86,8 +86,6 @@ import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
     AdminModule,
     LoansModule,
     DocumentsModule,
-  ],
-  imports: [
     TypeOrmModule.forFeature([User]),
   ],
   controllers: [AppController],
