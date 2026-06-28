@@ -5,6 +5,7 @@ import { BullModule } from '@nestjs/bull';
 import { APP_GUARD } from '@nestjs/core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { User } from './modules/users/entities/user.entity';
 import { RedisModule } from './modules/redis/redis.module';
 import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
@@ -85,6 +86,9 @@ import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
     AdminModule,
     LoansModule,
     DocumentsModule,
+  ],
+  imports: [
+    TypeOrmModule.forFeature([User]),
   ],
   controllers: [AppController],
   providers: [
