@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useEffect, useState, useCallback } from 'react';
+import { flushSync } from 'react-dom';
 import { useRouter } from 'next/navigation';
 import { authApi } from '@/lib/auth-api';
 import type { SafeUser, LoginRequest, RegisterRequest } from '@/types/auth';
@@ -54,14 +55,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = useCallback(async (data: LoginRequest): Promise<void> => {
     const res = await authApi.login(data);
     saveTokens(res.accessToken, res.refreshToken);
-    setUser(res.user);
-    router.push('/dashboard');
+    // flushSync commits the user state before router.push fires, preventing
+    // a race condition where the dashboard layout sees isAuthenticated=false
+    // and immediately counter-navigates to /login.
+    flushSync(() => setUser(res.user));
+    // Admin users go straight to the admin panel
+    const dest = res.user.role === 'admin' ? '/admin/dashboard' : '/dashboard';
+    (router.push as (href: string) => void)(dest);
   }, [router]);
 
   const register = useCallback(async (data: RegisterRequest): Promise<void> => {
     const res = await authApi.register(data);
     saveTokens(res.accessToken, res.refreshToken);
-    setUser(res.user);
+    flushSync(() => setUser(res.user));
     router.push('/dashboard');
   }, [router]);
 

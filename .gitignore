@@ -9,10 +9,17 @@ build/
 .next/
 out/
 
-# Environment files
+# Environment files — never commit real secrets
 .env
 .env.local
 .env.*.local
+.env.production
+.env.staging
+apps/api/.env*
+apps/web/.env*
+# Re-allow the example templates
+!apps/api/.env.local.example
+!apps/web/.env.local.example
 
 # TypeScript
 *.tsbuildinfo

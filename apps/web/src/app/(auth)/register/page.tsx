@@ -34,13 +34,17 @@ export default function RegisterPage() {
     try {
       await register(data);
     } catch (err: unknown) {
-      const message =
+      const raw =
         err && typeof err === 'object' && 'response' in err
-          ? (err as { response?: { data?: { message?: string } } }).response?.data?.message
-          : undefined;
-      form.setError('root', {
-        message: typeof message === 'string' ? message : 'Registration failed. Try again.',
-      });
+          ? (err as { response?: { data?: { message?: unknown } } }).response?.data?.message
+          : null;
+      const message =
+        typeof raw === 'string'
+          ? raw
+          : Array.isArray(raw)
+          ? (raw as string[]).join('. ')
+          : 'Registration failed. Try again.';
+      form.setError('root', { message });
     }
   };
 

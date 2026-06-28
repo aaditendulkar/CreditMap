@@ -1,9 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "node16",
+    "moduleResolution": "node16",
     "outDir": "./dist",
-    "baseUrl": "./",
     "incremental": true,
     "paths": {
       "@creditmap/types": ["../../packages/types/src"],
