@@ -15,7 +15,7 @@ async function bootstrap(): Promise<void> {
   app.setGlobalPrefix('api/v1');
 
   app.enableCors({
-    origin: config.get<string>('NEXT_PUBLIC_APP_URL') ?? 'http://localhost:3000',
+    origin: (config.get<string>('NEXT_PUBLIC_APP_URL') ?? 'http://localhost:3000').trim(),
     credentials: true,
   });
 
