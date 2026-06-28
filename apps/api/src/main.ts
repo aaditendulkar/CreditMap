@@ -10,7 +10,7 @@ async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule);
 
   const config = app.get(ConfigService);
-  const port = config.get<number>('APP_PORT') ?? 3001;
+  const port = config.get<number>('PORT') ?? config.get<number>('APP_PORT') ?? 3001;
 
   app.setGlobalPrefix('api/v1');
 
@@ -28,7 +28,7 @@ async function bootstrap(): Promise<void> {
     }),
   );
 
-  if (config.get('NODE_ENV') !== 'production') {
+  {
     const swaggerConfig = new DocumentBuilder()
       .setTitle('CreditMap API')
       .setDescription('CreditMap backend API documentation')
