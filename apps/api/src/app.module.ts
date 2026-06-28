@@ -49,7 +49,7 @@ import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
           ...base,
           entities:    [__dirname + '/**/*.entity{.ts,.js}'],
           migrations:  [__dirname + '/migrations/*{.ts,.js}'],
-          synchronize: !isProd,
+          synchronize: true,
           logging:     !isProd,
           ssl: isProd ? { rejectUnauthorized: false } : false,
         };
